@@ -22,4 +22,17 @@ describe("<App />", () => {
       getByTextInContainer(getByTestId("todo-list"), "Buy groceries")
     ).toBeInTheDocument();
   });
+
+  it("marks a To-Do as completed", () => {
+    const { getByPlaceholderText, getByText, queryByText } = render(<App />);
+    fireEvent.change(getByPlaceholderText("Add a to-do"), {
+      target: { value: "Buy groceries" },
+    });
+    fireEvent.submit(getByPlaceholderText("Add a to-do"));
+    fireEvent.click(getByText("Complete"));
+    expect(queryByText("Complete")).toBeNull();
+    expect(getByText("Buy groceries")).toHaveStyle(
+      "text-decoration: line-through"
+    );
+  });
 });
