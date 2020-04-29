@@ -1,12 +1,11 @@
 import React from "react";
+import TodoForm from "./components/TodoForm";
 import "./App.css";
 
 function App() {
   return (
     <div className="app">
-      <form>
-        <input type="text" placeholder="Add a to-do" className="input" />
-      </form>
+      <TodoForm />
     </div>
   );
 }
