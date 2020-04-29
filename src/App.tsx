@@ -16,6 +16,12 @@ function App() {
     setTodos(newTodos);
   };
 
+  const removeTodo = (index: number) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <div className="app">
       <div className="todo-list" data-testid="todo-list">
@@ -26,6 +32,7 @@ function App() {
             index={index}
             todo={todo}
             completeTodo={completeTodo}
+            removeTodo={removeTodo}
           />
         ))}
       </div>

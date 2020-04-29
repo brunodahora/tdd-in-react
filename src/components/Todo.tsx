@@ -6,22 +6,26 @@ type Props = {
   index: number;
   todo: TodoItem;
   completeTodo: (index: number) => void;
+  removeTodo: (index: number) => void;
 };
 
-const Todo = ({ index, todo, completeTodo }: Props) => (
+const Todo = ({ index, todo, completeTodo, removeTodo }: Props) => (
   <div
     className="todo"
     style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
   >
     {todo.text}
 
-    {!todo.isCompleted && (
-      <div>
+    <div>
+      {!todo.isCompleted && (
         <button className="todo-button" onClick={() => completeTodo(index)}>
           Complete
         </button>
-      </div>
-    )}
+      )}
+      <button className="todo-button" onClick={() => removeTodo(index)}>
+        x
+      </button>
+    </div>
   </div>
 );
 
